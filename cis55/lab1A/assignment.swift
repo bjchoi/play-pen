@@ -4,6 +4,31 @@
  
  */
  
+let numberOfDaysInMonth : Int = 31
+    
+var dailyPayArray = [1] // with 1st day pay
+var totalPay : Int = dailyPayArray[0]
+
+println(dailyPayArray.count)
+
+// 2. loop to initialize the elements of daily pay array on daily basis
+for i in 1...numberOfDaysInMonth
+{
+  var newPay = 2 * dailyPayArray[i - 1]
+  totalPay += newPay
+
+  var dailyPayInDollar  = Double(newPay) / 100.00
+  var totalPayIntDollar = Double(totalPay) / 100.00
+  
+  println("day: \(i) daily pay: $\(dailyPayInDollar) total pay: $\(totalPayIntDollar)")
+  dailyPayArray.append(newPay)
+}  
+  
+println(dailyPayArray)
+println(dailyPayArray.count)
+println(totalPay)
+
+println("finished")
  
  
 /* Lab Instructions
