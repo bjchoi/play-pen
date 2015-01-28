@@ -9,6 +9,18 @@
 import UIKit
 
 class MyTableViewController: UITableViewController {
+    
+    var ToDoItems = [
+      "Buy Groceries"
+    , "Pickup Laundry"
+    , "Wash Car"
+    , "Return Library Books"
+    , "Finish Assignment"
+    ]
+    
+    var ToDoImages = [
+        "groceries", "laundry", "car", "books", "assignment"
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,30 +36,38 @@ class MyTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        return ToDoItems.count
     }
 
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
+    override func tableView(tableView: UITableView
+                          , cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+                            
+        let cellIdentifier = "ToDoCell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as UITableViewCell
 
         // Configure the cell...
+        cell.textLabel?.text = ToDoItems[indexPath.row]
+        //cell.imageView?.image = UIImage(named : "stonehenge.jpg")
+        cell.imageView?.image = UIImage(named : ToDoImages[indexPath.row])
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
